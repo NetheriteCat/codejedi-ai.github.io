@@ -54,7 +54,10 @@ export const Experience = () => {
           </div>
 
           {years.map((year) => {
-            let side: 'left' | 'right' = 'left';
+            // Determine side based on year: odd years = left, even years = right
+            const yearNum = parseInt(year);
+            const yearSide: 'left' | 'right' = yearNum % 2 === 1 ? 'left' : 'right';
+            
             return (
               <div key={year} className="row timeline-movement">
                 <div className="timeline-badge">
@@ -62,9 +65,8 @@ export const Experience = () => {
                   <span className="timeline-balloon-date-month">{year}</span>
                 </div>
                 {groupedExperiences[year].map((experience, index) => {
-                  const currentSide = side;
-                  side = side === 'left' ? 'right' : 'left';
-                  return <TimelineItem key={index} item={experience} side={currentSide} />;
+                  // All experiences in the same year go on the same side
+                  return <TimelineItem key={index} item={experience} side={yearSide} />;
                 })}
               </div>
             );
