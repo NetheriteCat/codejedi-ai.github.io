@@ -199,6 +199,12 @@
 
 /* Fixed navbar styles */
 #header_wrapper {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
   transition: all 0.3s ease;
 }
 
@@ -208,14 +214,33 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Add top padding to body to account for fixed header */
-body {
-  padding-top: 70px;
+/* Hero section positioning - ensure it starts right below navbar */
+#hero_section {
+  margin-top: -70px !important;
+  padding-top: 70px !important;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
-/* Ensure sections have proper spacing */
+/* Remove body padding since we're handling it per section */
+body {
+  padding-top: 0 !important;
+}
+
+/* Ensure sections have proper spacing for fixed header */
 section {
   scroll-margin-top: 70px;
+}
+
+/* Specific section adjustments */
+#aboutUs,
+#skills,
+#experience,
+#Portfolio,
+#contact {
+  padding-top: 70px;
+  margin-top: -70px;
 }
 
 /* Portfolio Grid - 3 Projects Per Row */
@@ -223,7 +248,7 @@ section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  padding: 40px 20px;
+  padding: 40px 0; /* Remove horizontal padding to eliminate outer margins */
   max-width: 1400px;
   margin: 0 auto;
   justify-items: center;
@@ -301,7 +326,7 @@ section {
   #portfolio_wrapper {
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
-    padding: 30px 15px;
+    padding: 30px 0;
   }
   
   .portfolio-item {
@@ -326,7 +351,7 @@ section {
   #portfolio_wrapper {
     grid-template-columns: 1fr;
     gap: 20px;
-    padding: 20px 15px;
+    padding: 20px 0;
   }
   
   .portfolio-item {
@@ -366,13 +391,28 @@ section {
   }
 }
 
-/* Portfolio Filter Styles */
+/* Portfolio Filter Styles - Remove outer margins */
+.portfolio {
+  padding: 0; /* Remove any padding that creates outer margins */
+}
+
+#filters {
+  margin: 0; /* Remove any margin */
+  padding: 0 20px 40px 20px; /* Only add padding for spacing, not margins */
+}
+
 #filters ul {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 40px;
+  margin: 0; /* Remove margin */
+  padding: 0; /* Remove padding */
+  list-style: none;
+}
+
+#filters ul li {
+  margin: 0; /* Remove any li margins */
 }
 
 #filters ul li a {
@@ -381,6 +421,8 @@ section {
   transition: all 0.3s ease;
   border: 2px solid #e0e0e0;
   background: #fff;
+  display: block;
+  text-decoration: none;
 }
 
 #filters ul li a:hover,
@@ -389,6 +431,12 @@ section {
   color: #fff;
   border-color: #ED5441;
   transform: translateY(-2px);
+}
+
+#filters ul li a h5 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 /* Ensure grid items maintain aspect ratio */
@@ -410,4 +458,14 @@ section {
 .portfolio-item a:hover {
   text-decoration: none;
   color: inherit;
+}
+
+/* Container adjustments to remove outer margins */
+.container.portfolio_title {
+  padding-bottom: 0;
+}
+
+.portfolio-top,
+.portfolio_btm {
+  height: 0; /* Remove any spacing these might add */
 }
