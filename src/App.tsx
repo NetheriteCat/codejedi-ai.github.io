@@ -11,12 +11,14 @@ export function App() {
   return (
     <div className="App">
       <Header />
-      <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <Portfolio />
-      <Footer />
+      <div style={{ paddingTop: '70px' }}>
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Portfolio />
+        <Footer />
+      </div>
     </div>
   );
 }

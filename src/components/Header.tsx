@@ -31,7 +31,7 @@ export const Header = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offsetTop = element.offsetTop - 70;
+      const offsetTop = element.offsetTop - 70; // Account for fixed header height
       window.scrollTo({
         top: offsetTop,
         behavior: 'smooth'
@@ -40,7 +40,18 @@ export const Header = () => {
   };
 
   return (
-    <header id="header_wrapper" className={isScrolled ? 'scrolled' : ''}>
+    <header 
+      id="header_wrapper" 
+      className={isScrolled ? 'scrolled' : ''}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1000,
+        width: '100%'
+      }}
+    >
       <div className="container">
         <div className="header_box">
           <div className="logo">
