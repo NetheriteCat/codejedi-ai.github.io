@@ -3,6 +3,13 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 export const Hero = () => {
   const heroRef = useScrollAnimation('animate-zoom-in');
 
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('aboutUs');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="hero_section" className="top_cont_outer">
       <div className="hero_wrapper">
@@ -16,7 +23,9 @@ export const Hero = () => {
                     <strong>I <i className="fa fa-heart"></i> Programming</strong>
                   </h2>
                   <div className="underline"></div>
-                  <a href="#aboutUs" className="read_more2">Who AM I</a>
+                  <a href="#aboutUs" className="read_more2" onClick={(e) => { e.preventDefault(); scrollToAbout(); }}>
+                    Who AM I
+                  </a>
                 </div>
               </div>
             </div>
