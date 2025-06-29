@@ -1,4 +1,4 @@
-/* CSS Animations to replace WOW.js */
+/* CSS Animations and Clean Styles */
 
 @keyframes fadeIn {
   from {
@@ -140,61 +140,17 @@
   to { background-color: #FBEFF2; }
 }
 
-/* Slideshow animations */
-.mySlides {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+/* ===== CLEAN LAYOUT STYLES ===== */
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
 }
 
-.mySlides.active {
-  opacity: 1;
-}
-
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.dot.active,
-.dot:hover {
-  background-color: #717171;
-}
-
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  background-color: rgba(0,0,0,0.5);
-}
-
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-.slideshow-container {
-  position: relative;
-  max-width: 100%;
-  margin: auto;
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 /* Fixed navbar styles */
@@ -205,20 +161,31 @@
   right: 0;
   z-index: 1000;
   width: 100%;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 #header_wrapper.scrolled {
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Hero section positioning and centering */
+/* Hero section - clean positioning */
 #hero_section {
-  margin-top: -70px !important;
+  margin-top: 0 !important;
   padding-top: 70px !important;
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("../img/AISeeHuman.jpeg") no-repeat center;
+  background-size: cover;
+}
+
+.hero_wrapper {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -230,41 +197,71 @@
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 70px);
+  padding: 40px 0;
 }
 
 .top_left_cont {
-  text-align: center !important;
+  text-align: center;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .top_left_cont h2 {
-  text-align: center !important;
-  margin: 0 auto 30px auto !important;
+  font-size: 40px;
+  color: #FFF;
+  margin: 0 0 26px 0;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  line-height: 1.4;
 }
 
-.top_left_cont .underline {
-  margin: 20px auto !important;
+.top_left_cont h2 strong {
+  font-weight: 700;
+  color: #FFE800;
 }
 
-.top_left_cont .read_more2 {
-  margin: 30px auto 0 auto !important;
-  display: block;
-  width: fit-content;
+.top_left_cont p {
+  font-size: 18px;
+  color: #FFFFFF;
+  margin: 0 0 30px 0;
+  line-height: 1.6;
+  text-align: center;
 }
 
-/* Remove body padding since we're handling it per section */
-body {
-  padding-top: 0 !important;
+.read_more2 {
+  font-family: 'Raleway', sans-serif;
+  display: inline-block;
+  font-size: 16px;
+  width: 178px;
+  height: 46px;
+  line-height: 46px;
+  border-radius: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  text-decoration: none;
+  margin: 0 auto;
 }
 
-/* Ensure sections have proper spacing for fixed header */
+.read_more2:hover {
+  background: #fff;
+  color: #05c8f9;
+  border: 1px solid #fff;
+  text-decoration: none;
+}
+
+/* Section spacing - clean and consistent */
 section {
   scroll-margin-top: 70px;
+  position: relative;
 }
 
-/* Specific section adjustments */
 #aboutUs,
 #skills,
 #experience,
@@ -274,34 +271,57 @@ section {
   margin-top: -70px;
 }
 
-/* Portfolio Grid - 3 Projects Per Row */
+/* Skills section background */
+#skills {
+  background: url("../img/spacexRocket.jpeg") no-repeat center;
+  background-size: cover;
+  padding: 90px 0;
+}
+
+#skills h2,
+#skills h6 {
+  color: #fff;
+}
+
+/* Portfolio Grid - Clean 3-column layout */
 #portfolio_wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  padding: 40px 0; /* Remove horizontal padding to eliminate outer margins */
+  padding: 40px 20px;
   max-width: 1400px;
   margin: 0 auto;
-  justify-items: center;
 }
 
 .portfolio-item {
   width: 100%;
-  max-width: 400px;
   height: 600px;
   position: relative;
   overflow: hidden;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .portfolio-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.portfolio-item figure {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-item a {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
 }
 
 .portfolio-item .portfolio_img {
@@ -316,7 +336,6 @@ section {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  display: block;
   transition: transform 0.3s ease;
 }
 
@@ -339,7 +358,7 @@ section {
   color: #333;
   line-height: 1.3;
   font-weight: 600;
-  min-height: 2.6em; /* Ensure consistent height for titles */
+  min-height: 2.6em;
 }
 
 .portfolio-item figcaption p {
@@ -352,16 +371,131 @@ section {
   text-align: justify;
 }
 
-/* Responsive Grid Adjustments */
+/* Portfolio Filter Styles - Clean design */
+.portfolio {
+  padding: 0;
+}
+
+#filters {
+  margin: 0;
+  padding: 0 20px 40px 20px;
+}
+
+#filters ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#filters ul li {
+  margin: 0;
+}
+
+#filters ul li a {
+  padding: 12px 20px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  border: 2px solid #e0e0e0;
+  background: #fff;
+  display: block;
+  text-decoration: none;
+  color: #333;
+}
+
+#filters ul li a:hover,
+#filters ul li a.active {
+  background: #ED5441;
+  color: #fff;
+  border-color: #ED5441;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+#filters ul li a h5 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Slideshow styles - clean and simple */
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+}
+
+.mySlides {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.mySlides.active {
+  display: block;
+  opacity: 1;
+}
+
+.mySlides img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0,0,0,0.5);
+  border: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.dot.active,
+.dot:hover {
+  background-color: #717171;
+}
+
+/* Responsive Design - Clean breakpoints */
 @media (max-width: 1200px) {
   #portfolio_wrapper {
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
-    padding: 30px 0;
+    padding: 30px 15px;
   }
   
   .portfolio-item {
-    max-width: 350px;
     height: 550px;
   }
 }
@@ -373,7 +507,6 @@ section {
   }
   
   .portfolio-item {
-    max-width: 380px;
     height: 580px;
   }
 }
@@ -382,11 +515,10 @@ section {
   #portfolio_wrapper {
     grid-template-columns: 1fr;
     gap: 20px;
-    padding: 20px 0;
+    padding: 20px 10px;
   }
   
   .portfolio-item {
-    max-width: 100%;
     height: 500px;
   }
   
@@ -402,10 +534,13 @@ section {
     font-size: 0.9em;
   }
   
-  /* Hero text responsive adjustments */
   .top_left_cont h2 {
     font-size: 28px !important;
     line-height: 1.3 !important;
+  }
+  
+  .top_left_cont {
+    padding: 0 15px;
   }
 }
 
@@ -427,7 +562,6 @@ section {
     font-size: 0.85em;
   }
   
-  /* Hero text mobile adjustments */
   .top_left_cont h2 {
     font-size: 24px !important;
     line-height: 1.2 !important;
@@ -436,83 +570,43 @@ section {
   .top_left_cont p {
     font-size: 16px !important;
   }
+  
+  .read_more2 {
+    width: 150px;
+    font-size: 14px;
+  }
 }
 
-/* Portfolio Filter Styles - Remove outer margins */
-.portfolio {
-  padding: 0; /* Remove any padding that creates outer margins */
-}
-
-#filters {
-  margin: 0; /* Remove any margin */
-  padding: 0 20px 40px 20px; /* Only add padding for spacing, not margins */
-}
-
-#filters ul {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 0; /* Remove margin */
-  padding: 0; /* Remove padding */
-  list-style: none;
-}
-
-#filters ul li {
-  margin: 0; /* Remove any li margins */
-}
-
-#filters ul li a {
-  padding: 12px 20px;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-  border: 2px solid #e0e0e0;
-  background: #fff;
-  display: block;
-  text-decoration: none;
-}
-
-#filters ul li a:hover,
-#filters ul li a.active {
-  background: #ED5441;
-  color: #fff;
-  border-color: #ED5441;
-  transform: translateY(-2px);
-}
-
-#filters ul li a h5 {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-/* Ensure grid items maintain aspect ratio */
-.portfolio-item figure {
-  margin: 0;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.portfolio-item a {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: inherit;
-}
-
-.portfolio-item a:hover {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Container adjustments to remove outer margins */
+/* Remove any conflicting spacing */
 .container.portfolio_title {
   padding-bottom: 0;
 }
 
 .portfolio-top,
 .portfolio_btm {
-  height: 0; /* Remove any spacing these might add */
+  display: none;
+}
+
+/* Clean section titles */
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title h2 {
+  font-size: 38px;
+  color: #222222;
+  font-family: 'Raleway', sans-serif;
+  font-weight: normal;
+  margin: 0 0 20px 0;
+  text-transform: uppercase;
+}
+
+.section-title h6 {
+  font-size: 16px;
+  line-height: 24px;
+  color: #888888;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  margin: 0;
 }
