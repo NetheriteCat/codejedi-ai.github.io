@@ -20,10 +20,18 @@ export const Portfolio = () => {
   };
 
   const PortfolioItem = ({ project }: { project: typeof portfolioProjects[0] }) => (
-    <figure className={`portfolio-item one-four ${project.category} isotope-item effect-oscar`}>
-      <a href={project.href} className="fancybox">
+    <figure className={`portfolio-item ${project.category} isotope-item effect-oscar`}>
+      <a href={project.href} className="fancybox" target="_blank" rel="noopener noreferrer">
         <div className="portfolio_img">
-          <img src={project.imageUrl} alt={project.title} />
+          <img 
+            src={project.imageUrl} 
+            alt={project.title}
+            loading="lazy"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = '/img/placeholder.jpg'; // Fallback image
+            }}
+          />
         </div>
         <figcaption>
           <div>
@@ -69,7 +77,7 @@ export const Portfolio = () => {
 
         <div className="isotope fadeInLeft animated grid" id="portfolio_wrapper">
           {filteredProjects.map((project, index) => (
-            <PortfolioItem key={index} project={project} />
+            <PortfolioItem key={`${project.category}-${index}`} project={project} />
           ))}
         </div>
       </div>
