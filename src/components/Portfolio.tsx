@@ -20,27 +20,29 @@ export const Portfolio = () => {
   };
 
   const PortfolioItem = ({ project }: { project: typeof portfolioProjects[0] }) => (
-    <figure className={`portfolio-item ${project.category} isotope-item effect-oscar`}>
-      <a href={project.href} className="fancybox" target="_blank" rel="noopener noreferrer">
-        <div className="portfolio_img">
-          <img 
-            src={project.imageUrl} 
-            alt={project.title}
-            loading="lazy"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.src = '/img/placeholder.jpg'; // Fallback image
-            }}
-          />
-        </div>
-        <figcaption>
-          <div>
-            <h2><span>{project.title}</span></h2>
-            <p>{project.description}</p>
+    <div className={`portfolio-item ${project.category} isotope-item effect-oscar`}>
+      <figure>
+        <a href={project.href} target="_blank" rel="noopener noreferrer">
+          <div className="portfolio_img">
+            <img 
+              src={project.imageUrl} 
+              alt={project.title}
+              loading="lazy"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = '/img/placeholder.jpg'; // Fallback image
+              }}
+            />
           </div>
-        </figcaption>
-      </a>
-    </figure>
+          <figcaption>
+            <div>
+              <h2><span>{project.title}</span></h2>
+              <p>{project.description}</p>
+            </div>
+          </figcaption>
+        </a>
+      </figure>
+    </div>
   );
 
   return (
@@ -75,7 +77,7 @@ export const Portfolio = () => {
           </ul>
         </div>
 
-        <div className="isotope fadeInLeft animated grid" id="portfolio_wrapper">
+        <div className="grid" id="portfolio_wrapper">
           {filteredProjects.map((project, index) => (
             <PortfolioItem key={`${project.category}-${index}`} project={project} />
           ))}
