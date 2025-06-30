@@ -64,22 +64,27 @@ export const About = () => {
                       {slides.map((slide, index) => (
                         <div 
                           key={index}
-                          className={`mySlides ${index === currentSlide ? 'active' : ''}`}
+                          className={`mySlides fade ${index === currentSlide ? 'active' : ''}`}
                           style={{ display: index === currentSlide ? 'block' : 'none' }}
                         >
                           <img className="img-responsive" src={slide} alt={`About ${index + 1}`} />
                         </div>
                       ))}
-                      <a className="prev" onClick={prevSlide}>&#10094;</a>
-                      <a className="next" onClick={nextSlide}>&#10095;</a>
+                      <button className="prev" onClick={prevSlide} aria-label="Previous slide">
+                        &#10094;
+                      </button>
+                      <button className="next" onClick={nextSlide} aria-label="Next slide">
+                        &#10095;
+                      </button>
                     </div>
                     <div style={{ textAlign: 'center', marginTop: '10px' }}>
                       {slides.map((_, index) => (
-                        <span 
+                        <button 
                           key={index}
                           className={`dot ${index === currentSlide ? 'active' : ''}`}
                           onClick={() => goToSlide(index)}
-                        ></span>
+                          aria-label={`Go to slide ${index + 1}`}
+                        />
                       ))}
                     </div>
                   </div>

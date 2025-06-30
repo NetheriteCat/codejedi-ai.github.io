@@ -3,6 +3,7 @@ import { useEffect, useState } from 'preact/hooks';
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero_section');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +38,12 @@ export const Header = () => {
         behavior: 'smooth'
       });
     }
+    // Close mobile menu after navigation
+    setIsMobileMenuOpen(false);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -55,16 +62,18 @@ export const Header = () => {
       <div className="container">
         <div className="header_box">
           <div className="logo">
-            <a href="#"><img src="/img/logo.png" alt="logo" /></a>
+            <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection('hero_section'); }}>
+              <img src="/img/logo.png" alt="logo" />
+            </a>
           </div>
           <nav className="navbar navbar-inverse" role="navigation">
             <div className="navbar-header">
               <button 
                 type="button" 
-                id="nav-toggle" 
                 className="navbar-toggle" 
-                data-toggle="collapse"
-                data-target="#main-nav"
+                onClick={toggleMobileMenu}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="main-nav"
               >
                 <span className="sr-only">Toggle navigation</span>
                 <span className="icon-bar"></span>
@@ -72,7 +81,10 @@ export const Header = () => {
                 <span className="icon-bar"></span>
               </button>
             </div>
-            <div id="main-nav" className="collapse navbar-collapse navStyle">
+            <div 
+              id="main-nav" 
+              className={`collapse navbar-collapse navStyle ${isMobileMenuOpen ? 'in' : ''}`}
+            >
               <ul className="nav navbar-nav" id="mainNav">
                 <li className={activeSection === 'hero_section' ? 'active' : ''}>
                   <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection('hero_section'); }}>
